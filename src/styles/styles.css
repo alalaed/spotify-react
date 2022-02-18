@@ -1,0 +1,99 @@
+:root {
+  --black-1: #000000; /* The darkest black */
+  --black-2: #121212; /* Slightly less dark black */
+  --black-3: #1f1f1f; /* Less dark black */
+  --black-4: #2d2d2d; /* Less dark black */
+  --white-1: #ffffff; /* Purest white - Main text */
+  --white-2: #b2b2b2; /* Dark white - secondary text */
+  --spotify-green: #1db954; /* Signaturea spotify green */
+}
+
+body {
+  font-family: "Kanit", sans-serif;
+  /* font-family: 'Martel Sans', sans-serif;
+    font-family: 'Nunito', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif; */
+  background: rgb(162, 2, 2);
+  background: linear-gradient(
+    180deg,
+    rgba(162, 2, 2, 0.83984375) 0%,
+    #121212 19%
+  );
+  background-attachment: fixed;
+}
+
+.sidebar-bg {
+  background-color: var(--black-1);
+  color: var(--white-2);
+  height: calc(100vh - 24px);
+  min-width: 180px;
+}
+
+.sidebar-bg > div > div > span:hover {
+  color: var(--white-1);
+}
+.sidebar-bg > div > div > div:hover {
+  color: var(--white-1);
+}
+
+.sidebar-logo {
+  color: var(--white-1);
+  font-size: 2rem;
+}
+
+.sidebar-logo > span {
+  vertical-align: middle;
+}
+
+.sidebar-logo-text {
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+
+.sidebar-top div {
+  text-align: left;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+}
+.sidebar-top {
+  text-align: left;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.sidebar-top > div > span:last-of-type {
+  margin-left: 1rem;
+  font-size: 0.9rem;
+}
+.sidebar-divider {
+  height: 1rem;
+}
+
+.sidebar-top img {
+  height: 18px;
+}
+
+.sidebar-line-divider {
+  border-bottom: 1px solid var(--white-2);
+  opacity: 0.3;
+}
+
+.sidebar-bottom {
+  font-size: 0.8rem;
+
+  /* position: relative; */
+}
+
+.sidebar-bottom > div > div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1rem;
+}
+
+.sidebar-bottom-content {
+  height: calc(50vh - 50px);
+  overflow-y: auto;
+  white-space: nowrap;
+}

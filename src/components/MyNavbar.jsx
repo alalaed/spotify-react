@@ -1,5 +1,7 @@
+import { Button } from "react-bootstrap";
+
 const MyNavbar = () => {
-  return <div>hello navbar</div>;
+  return <Button variant="primary">press me </Button>;
 };
 
 export default MyNavbar;

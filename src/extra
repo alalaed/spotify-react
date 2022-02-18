@@ -1,0 +1,11 @@
+{/* <BrowserRouter>
+        <MyNavbar />
+        <MySidebar />
+        <MyPlayer />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/artist" element={<Artist />} />
+          <Route path="/album" /> element={<Album />}
+          <Route path="/search" /> element={<Search />}
+        </Routes>
+      </BrowserRouter> */}
