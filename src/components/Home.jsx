@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 
 const Home = () => {
@@ -17,45 +17,31 @@ const Home = () => {
     "biggie",
   ];
 
-  let arrayOfRandomArtists = [];
+  const getTheArtists = async () => {
+    let arrayOfRandomArtists = [];
 
-  const artists = (arrayOfRandomArtists) => {
-    for (let i = 0; i < 8; i++) {
-      let random = Math.floor(Math.random() * different.length);
-      arrayOfRandomArtists.push(different[random]);
-    }
-    return arrayOfRandomArtists;
-  };
-  artists(arrayOfRandomArtists);
-  console.log(arrayOfRandomArtists);
-
-  const [artist, setArtist] = useState();
-
-  const render = (arrayOfRandomArtists) => {
+    const artists = (arrayOfRandomArtists) => {
+      for (let i = 0; i < 8; i++) {
+        let random = Math.floor(Math.random() * different.length);
+        arrayOfRandomArtists.push(different[random]);
+      }
+      return arrayOfRandomArtists;
+    };
+    artists(arrayOfRandomArtists);
     console.log(arrayOfRandomArtists);
-    let container = document.getElementById("main-section-small");
-
-    arrayOfRandomArtists.forEach((element) => {
-      let x = Math.floor(Math.random() * 2);
-      fetch(
-        `https://striveschool-api.herokuapp.com/api/deezer/search?q=${element}`
-      )
-        .then((response) => response.json())
-        .then((body) => {
-          const inhalt = `
-          <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            
-              <div class="mx-1 small-card-main d-flex align-items-center  my-2">
-                  <img class="small-card-image-main" src="${body.data[x].album.cover_small}" alt="">
-                  <a href="./index-album.html?albumId=${body.data[x].album.id}"><p class=" description-main"> ${body.data[x].title_short}</p></a>
-              </div>
-            </a>
-          </div>
-        `;
-          container.innerHTML += inhalt;
-        });
-    });
+    await Promise.all(
+      arrayOfRandomArtists.map(async (element) => {
+        let resp = await fetch(
+          `https://striveschool-api.herokuapp.com/api/deezer/search?q=${element}`
+        );
+        let artist = await resp.json();
+        setArtistsObjects([...artistsObjects, artist.data[0]]);
+      })
+    );
   };
+  useEffect(() => getTheArtists(), []);
+
+  const [artistsObjects, setArtistsObjects] = useState([]);
 
   return (
     <div>
@@ -63,6 +49,7 @@ const Home = () => {
         <Row className=" ml-2">
           <h1 className="h1-main">Good morning</h1>
         </Row>
+
         <Row id="main-section-small"></Row>
       </Container>
 
