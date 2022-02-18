@@ -39,11 +39,12 @@ body {
 .sidebar-logo {
   color: var(--white-1);
   font-size: 2rem;
+  text-align: left;
 }
 
-.sidebar-logo > span {
+/* .sidebar-logo > span {
   vertical-align: middle;
-}
+} */
 
 .sidebar-logo-text {
   font-size: 1.5rem;
@@ -81,6 +82,7 @@ body {
 
 .sidebar-bottom {
   font-size: 0.8rem;
+  text-align: left;
 
   /* position: relative; */
 }
@@ -96,4 +98,23 @@ body {
   height: calc(50vh - 50px);
   overflow-y: auto;
   white-space: nowrap;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--black-4);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--black-2);
 }
