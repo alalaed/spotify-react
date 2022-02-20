@@ -6,15 +6,18 @@ import {
   BsPlusSquareFill,
   BsPeople,
 } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import like from "../assets/liked-icon.png";
 
 const MySidebar = () => {
   return (
     <div className="sidebar-bg sticky-top px-2">
       <div className="sidebar-logo px-3">
-        <span>
-          <BsSpotify />
-        </span>
+        <Link to={"/"}>
+          <span>
+            <BsSpotify />
+          </span>
+        </Link>
         <span className="ml-2 sidebar-logo-text">Spotify</span>
       </div>
       <div className="sidebar-top mt-3">

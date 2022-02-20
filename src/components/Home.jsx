@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import Album from "./Album";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const different = [
@@ -46,6 +48,7 @@ const Home = () => {
   useEffect(() => getTheArtists(), []);
 
   const [artistsObjects, setArtistsObjects] = useState([]);
+  console.log(artistsObjects);
 
   return (
     <div>
@@ -62,7 +65,9 @@ const Home = () => {
                   src={artist.album.cover_small}
                   alt=""
                 />
-                <p class=" description-main"> {artist.title_short}</p>
+                <Link to={"/album" + artist.album.id}>
+                  <p class=" description-main"> {artist.artist.name}</p>
+                </Link>
               </div>
             </Col>
           ))}
@@ -124,25 +129,19 @@ const Home = () => {
         </p>
         <div id="main-section-to-try" className="row">
           {artistsObjects.map((artist) => (
-            <Col
-              xs={12}
-              md={6}
-              lg={4}
-              xl={3}
-              key={artist.id}
-              className="mt-2"
-              key={artist.id}
-            >
+            <Col xs={12} md={6} lg={4} xl={3} key={artist.id} className="mt-2">
               <div className="card-main pb-1">
                 <div className="d-flex justify-content-center">
                   <div className="d-flex justify-content-center">
                     <div className="imagewrapper">
                       <div className="son">
-                        <img
-                          className="px-3 py-3 card-image-main"
-                          src={artist.album.cover_big}
-                          alt=""
-                        />
+                        <Link to={"/album" + artist.id}>
+                          <img
+                            className="px-3 py-3 card-image-main"
+                            src={artist.album.cover_big}
+                            alt=""
+                          />
+                        </Link>
                       </div>
                       <div className="son2 d-flex justify-content-end align-items-end">
                         <div className="playbutton mb-3 mr-3">
@@ -153,9 +152,11 @@ const Home = () => {
                   </div>
                 </div>
                 <h6 class="px-2 my-1 card-title">{artist.title_short}</h6>
-                <p class="card-description-main my-2 px-2 ">
-                  {artist.artist.name}
-                </p>
+                <Link to={"/artist" + artist.artist.id}>
+                  <p class="card-description-main my-2 px-2 ">
+                    {artist.artist.name}
+                  </p>
+                </Link>
               </div>
             </Col>
           ))}
