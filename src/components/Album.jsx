@@ -23,7 +23,7 @@ const Album = () => {
         <Row style={{ marginTop: "80px" }}>
           <Col xs={12} className="card-head d-flex my-2">
             <Col xs={2} className=" card-head-image">
-              <img src={album.cover_medium} />
+              <img className="card-image-head" src={album.cover_medium} />
             </Col>
             <Col
               xs={8}
@@ -60,7 +60,36 @@ const Album = () => {
           style={{ backgroundColor: "rgb(204, 186, 186)", marginTop: "25px" }}
         />
 
-        <div className="artist-songs-table-wrapper pr-3"></div>
+        <div className="artist-songs-table-wrapper pr-3">
+          {album.map((track) => (
+            <Row className=" align-items-center py-3">
+              <>
+                <Col xs={9} sm={6} className=" artist-main-songs-list">
+                  <span className="px-3 mx-0 mb-3 text-number">{1}</span>
+                  <div className="d-inline-block">
+                    <p className="fox mb-0">{album.tracks.data.title}</p>
+                    <p className="under_text">
+                      {album.tracks.data.artist.name}
+                    </p>
+                  </div>
+                </Col>
+                <Col
+                  xs={3}
+                  className=" d-none d-md-block artist-main-songs-right"
+                >
+                  <span></span>
+                </Col>
+                <Col
+                  xs={12}
+                  md={3}
+                  className="col-12 col-md-3 d-none d-sm-block text-right artist-main-songs-right"
+                >
+                  <span className="ml-3 duration">{}</span>
+                </Col>
+              </>
+            </Row>
+          ))}
+        </div>
       </Container>
     </div>
   );
