@@ -61,7 +61,7 @@ const Album = () => {
         />
 
         <div className="artist-songs-table-wrapper pr-3">
-          {album.map((track) => (
+          {album.tracks.map((track) => (
             <Row className=" align-items-center py-3">
               <>
                 <Col xs={9} sm={6} className=" artist-main-songs-list">
