@@ -52,7 +52,7 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/artist" element={<Artist />} />
-                  <Route path="/album/:ID" element={<Album />} />
+                  <Route path="/album/:Id" element={<Album />} />
                   <Route path="/search" element={<Search />} />
                 </Routes>
               </Col>

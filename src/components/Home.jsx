@@ -65,7 +65,7 @@ const Home = () => {
                   src={artist.album.cover_small}
                   alt=""
                 />
-                <Link to={"/album" + artist.album.id}>
+                <Link to={"/album/" + artist.album.id}>
                   <p class=" description-main"> {artist.artist.name}</p>
                 </Link>
               </div>

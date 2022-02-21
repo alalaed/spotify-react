@@ -1,24 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 const Album = () => {
   const [album, setAlbum] = useState([]);
   const params = useParams();
+  console.log(params.Id);
 
   const getArtist = async () => {
     let resp = await fetch(
-      "https://striveschool-api.herokuapp.com/api/deezer/album/" + params.ID
+      "https://striveschool-api.herokuapp.com/api/deezer/album/" + params.Id
     );
+
     let data = await resp.json();
     console.log(data);
+    setAlbum(data);
   };
+  useEffect(() => getArtist(), []);
   return (
     <div>
       <Container fluid className=" my-2">
         <Row style={{ marginTop: "80px" }}>
           <Col xs={12} className="card-head d-flex my-2">
-            <Col xs={2} className=" card-head-image"></Col>
+            <Col xs={2} className=" card-head-image">
+              <img src={album.cover_medium} />
+            </Col>
             <Col
               xs={8}
               className=" d-flex description text-white justify-content-start align-items-end"
